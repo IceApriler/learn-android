@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Android:", "The onCreate() event");
         registerClick();
     }
+
     public String getEditText() {
         EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
         return editText.getText().toString();
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
          * 3. 需要注意的是，为了兼容用户通过「back返回键」来销毁activity返回时也能获取到数据，需要在SecondActivity中重写onBackPressed。
          */
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
+        switch (requestCode) {
             // 来自SecondActivity
             case 1:
                 if (resultCode == RESULT_OK) {
