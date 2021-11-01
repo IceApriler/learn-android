@@ -9,17 +9,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
-        <activity android:name=".DisplayMessageActivity"
+        <activity android:name=".ThirdActivity">
+            <!-- Intent隐式启动 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http"/>
+            </intent-filter>
+        </activity>
+        <!-- 第二页 -->
+        <activity
+            android:name=".SecondActivity"
             android:parentActivityName=".MainActivity">
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
+
+            <!-- The meta-data tag is required if you support API level 15 and lower（2011年以前的Android4.0以下） -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
+            <!-- Intent隐式启动 -->
+            <intent-filter>
+                <action android:name="com.example.firstapp.ACTION_START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.example.firstapp.MY_CATEGORY" />
+            </intent-filter>
         </activity>
+        <!-- 主页 -->
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
+                <!-- 表明这个Activity是整个应用程序的入口点 -->
+                <action android:name="android.intent.action.MAIN" />
+                <!-- 把这个Activity归属到加载器类，即把这个Activity标注为自动会加载和启动的Activity，这样程序启动时候就先加载这个Activity了 -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
