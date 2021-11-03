@@ -89,5 +89,28 @@
             android:layout_marginTop="120dp"
             android:text="拨打10086" />
 
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="351dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="170dp"
+            android:text="前往normal活动，观察生命周期" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="351dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="220dp"
+            android:text="前往dialog窗口式活动，观察生命周期" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

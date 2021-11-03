@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
+        <!-- 使用对话框式的主题 -->
+        <activity android:name=".DialogActivity" android:theme="@style/Theme.AppCompat.Dialog"></activity>
+        <activity android:name=".NormalActivity"></activity>
         <activity android:name=".ThirdActivity">
             <!-- Intent隐式启动 -->
             <intent-filter>

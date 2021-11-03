@@ -19,14 +19,55 @@ import android.widget.EditText;
  */
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "LifeCycle: MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("Android:", "The onCreate() event");
+        Log.d(TAG, "onCreate: ");
         registerClick();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: ");
+    }
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.i(TAG, "onBackPressed: 退出MainActivity");
     }
 
     public String getEditText() {
@@ -60,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
         Button button3 = (Button) findViewById(R.id.button3);
         Button button4 = (Button) findViewById(R.id.button4);
         Button button5 = (Button) findViewById(R.id.button5);
+        Button button6 = (Button) findViewById(R.id.button6);
+        Button button7 = (Button) findViewById(R.id.button7);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,10 +126,10 @@ public class MainActivity extends AppCompatActivity {
                  * 2. 虽然没有生命category，但是startActivity时会自动将android.intent.category.DEFAULT添加到Intent中。
                  * 3. 每个Intent只能指定一个action，却能指定多个category。
                  */
-                Intent intent2 = new Intent("com.example.firstapp.ACTION_START");
-                intent2.addCategory("com.example.firstapp.MY_CATEGORY");
-                intent2.putExtra(EXTRA_MESSAGE, getEditText());
-                startActivity(intent2);
+                Intent intent = new Intent("com.example.firstapp.ACTION_START");
+                intent.addCategory("com.example.firstapp.MY_CATEGORY");
+                intent.putExtra(EXTRA_MESSAGE, getEditText());
+                startActivity(intent);
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
@@ -97,9 +140,9 @@ public class MainActivity extends AppCompatActivity {
                  * 1. 打开网页 android.intent.action.VIEW
                  * 2. 协议为http
                  */
-                Intent intent3 = new Intent("android.intent.action.VIEW");
-                intent3.setData(Uri.parse("http://www.baidu.com"));
-                startActivity(intent3);
+                Intent intent = new Intent("android.intent.action.VIEW");
+                intent.setData(Uri.parse("http://www.baidu.com"));
+                startActivity(intent);
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
@@ -110,9 +153,25 @@ public class MainActivity extends AppCompatActivity {
                  * 1. 拨打电话 android.intent.ACTION_DIAL （android系统的内置动作）
                  * 2. 协议为tel
                  */
-                Intent intent4 = new Intent(Intent.ACTION_DIAL);
-                intent4.setData(Uri.parse("tel:10086"));
-                startActivity(intent4);
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:10086"));
+                startActivity(intent);
+            }
+        });
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NormalActivity.class);
+                Log.i(TAG, "onClick: 即将打开NormalActivity");
+                startActivity(intent);
+            }
+        });
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DialogActivity.class);
+                Log.i(TAG, "onClick: 即将打开DialogActivity");
+                startActivity(intent);
             }
         });
     }
