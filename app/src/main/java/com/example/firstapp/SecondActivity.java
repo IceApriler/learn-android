@@ -1,12 +1,17 @@
 package com.example.firstapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Objects;
 
 /**
  * 1. 接收activity跳转参数
@@ -14,7 +19,8 @@ import android.widget.TextView;
  * 3. setOnClickListener注册监听onClick事件
  * 4. 销毁当前Activity，实现返回
  */
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends BaseActivity {
+    private static final String TAG = "SecondActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,12 @@ public class SecondActivity extends AppCompatActivity {
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
         textView.setText(message);
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle("SecondActivity");
+        if (savedInstanceState != null) {
+            String tempData = savedInstanceState.getString("data_key");
+            Log.d(TAG, "savedInstanceState" + tempData);
+        }
 
         registerClick();
     }
@@ -70,5 +82,16 @@ public class SecondActivity extends AppCompatActivity {
         super.onBackPressed();
 
         this.destoryActivity();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        /**
+         * 当不是用户主动关闭Activity的情况下，来进行页面数据的保存和恢复
+         */
+        super.onSaveInstanceState(outState);
+        String temData = "onSaveInstanceState保存一些数据";
+        outState.putString("data_key", temData);
+        Log.d(TAG, "onSaveInstanceState: " + temData);
     }
 }
