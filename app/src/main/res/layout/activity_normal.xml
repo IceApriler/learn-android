@@ -39,8 +39,8 @@
             android:text="切换下面的图片"/>
         <ImageView
             android:id="@+id/image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/img_1"/>
         <Button
             android:id="@+id/button03"
@@ -66,7 +66,12 @@
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="弹出一个对话框"/>
-
+        <Button
+            android:id="@+id/button06"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="弹出一个加载进度条对话框"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

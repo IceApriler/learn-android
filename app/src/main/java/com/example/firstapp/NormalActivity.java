@@ -3,6 +3,7 @@ package com.example.firstapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +28,7 @@ public class NormalActivity extends BaseActivity implements View.OnClickListener
     private EditText editText;
     private ImageView imageView;
     private ProgressBar progressBar;
-    private Integer[] buttonIdList = {R.id.button01, R.id.button02, R.id.button03, R.id.button04, R.id.button05};
+    private Integer[] buttonIdList = {R.id.button01, R.id.button02, R.id.button03, R.id.button04, R.id.button05, R.id.button06};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +111,16 @@ public class NormalActivity extends BaseActivity implements View.OnClickListener
 
                 });
                 dialog.show();
+                break;
+            case R.id.button06:
+                /**
+                 * 5. 弹出一个加载进度对话框。
+                 */
+                ProgressDialog progressDialog = new ProgressDialog(NormalActivity.this);
+                progressDialog.setTitle("这个是ProgressDialog");
+                progressDialog.setMessage("加载中...");
+                progressDialog.setCancelable(true);
+                progressDialog.show();
                 break;
             default:
                 break;
