@@ -9,18 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstApp">
-        <!-- 使用对话框式的主题 -->
-        <activity android:name=".DialogActivity" android:theme="@style/Theme.AppCompat.Dialog"></activity>
-        <activity android:name=".NormalActivity"></activity>
+        <activity android:name=".FrameActivity"></activity>
+        <activity android:name=".RelativeActivity" /> <!-- 使用对话框式的主题 -->
+        <activity
+            android:name=".DialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity android:name=".NormalActivity" />
         <activity android:name=".ThirdActivity">
+
             <!-- Intent隐式启动 -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="http" />
             </intent-filter>
-        </activity>
-        <!-- 第二页 -->
+        </activity> <!-- 第二页 -->
         <activity
             android:name=".SecondActivity"
             android:parentActivityName=".MainActivity">
@@ -36,8 +41,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="com.example.firstapp.MY_CATEGORY" />
             </intent-filter>
-        </activity>
-        <!-- 主页 -->
+        </activity> <!-- 主页 -->
         <activity android:name=".MainActivity">
             <intent-filter>
 
